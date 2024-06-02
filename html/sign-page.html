@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원가입 페이지</title>
+    <link rel="stylesheet" href="../css/sign-page.css" />
   </head>
   <body>
     <h2>자신에게 맞는 영화를 추천받아보세요</h2>
@@ -14,46 +15,54 @@
       <input id="password" class="input-box" type="password" /><br />
       <label for="password-check">비밀번호 확인</label><br />
       <input id="password-check" class="input-box" type="password" /><br />
-      <label>MBTI</label>
-      <div>
-        <input type="radio" id="infp" name="mbti-choice" value="infp" checked />
-        <label for="infp">INFP</label>
-        <input type="radio" id="enfp" name="mbti-choice" value="enfp" />
-        <label for="enfp">ENFP</label>
-        <input type="radio" id="infj" name="mbti-choice" value="infj" />
-        <label for="infj">INFJ</label>
-        <input type="radio" id="enfj" name="mbti-choice" value="enfj" />
-        <label for="enfj">ENFJ</label>
-      </div>
-      <div>
-        <input type="radio" id="intp" name="mbti-choice" value="intp" />
-        <label for="intp">INTP</label>
-        <input type="radio" id="entp" name="mbti-choice" value="entp" />
-        <label for="entp">ENTP</label>
-        <input type="radio" id="intj" name="mbti-choice" value="intj" />
-        <label for="intj">INTJ</label>
-        <input type="radio" id="entj" name="mbti-choice" value="entj" />
-        <label for="entj">ENTJ</label>
-      </div>
-      <div>
-        <input type="radio" id="isfp" name="mbti-choice" value="isfp" />
-        <label for="isfp">ISFP</label>
-        <input type="radio" id="esfp" name="mbti-choice" value="esfp" />
-        <label for="esfp">ESFP</label>
-        <input type="radio" id="isfj" name="mbti-choice" value="isfj" />
-        <label for="isfj">ISFJ</label>
-        <input type="radio" id="esfj" name="mbti-choice" value="esfj" />
-        <label for="esfj">ESFJ</label>
-      </div>
-      <div>
-        <input type="radio" id="istp" name="mbti-choice" value="istp" />
-        <label for="istp">ISTP</label>
-        <input type="radio" id="estp" name="mbti-choice" value="estp" />
-        <label for="estp">ESTP</label>
-        <input type="radio" id="istj" name="mbti-choice" value="istj" />
-        <label for="istj">ISTJ</label>
-        <input type="radio" id="estj" name="mbti-choice" value="estj" />
-        <label for="estj">ESTJ</label>
+      <label id="mbti">MBTI</label>
+      <div id="mbti-choice-box">
+        <div class="mbti-row">
+          <input
+            type="radio"
+            id="infp"
+            name="mbti-choice"
+            value="infp"
+            checked
+          />
+          <label for="infp">INFP</label>
+          <input type="radio" id="enfp" name="mbti-choice" value="enfp" />
+          <label for="enfp">ENFP</label>
+          <input type="radio" id="infj" name="mbti-choice" value="infj" />
+          <label for="infj">INFJ</label>
+          <input type="radio" id="enfj" name="mbti-choice" value="enfj" />
+          <label for="enfj">ENFJ</label>
+        </div>
+        <div class="mbti-row">
+          <input type="radio" id="intp" name="mbti-choice" value="intp" />
+          <label for="intp">INTP</label>
+          <input type="radio" id="entp" name="mbti-choice" value="entp" />
+          <label for="entp">ENTP</label>
+          <input type="radio" id="intj" name="mbti-choice" value="intj" />
+          <label for="intj">INTJ</label>
+          <input type="radio" id="entj" name="mbti-choice" value="entj" />
+          <label for="entj">ENTJ</label>
+        </div>
+        <div class="mbti-row">
+          <input type="radio" id="isfp" name="mbti-choice" value="isfp" />
+          <label for="isfp">ISFP</label>
+          <input type="radio" id="esfp" name="mbti-choice" value="esfp" />
+          <label for="esfp">ESFP</label>
+          <input type="radio" id="isfj" name="mbti-choice" value="isfj" />
+          <label for="isfj">ISFJ</label>
+          <input type="radio" id="esfj" name="mbti-choice" value="esfj" />
+          <label for="esfj">ESFJ</label>
+        </div>
+        <div class="mbti-row">
+          <input type="radio" id="istp" name="mbti-choice" value="istp" />
+          <label for="istp">ISTP</label>
+          <input type="radio" id="estp" name="mbti-choice" value="estp" />
+          <label for="estp">ESTP</label>
+          <input type="radio" id="istj" name="mbti-choice" value="istj" />
+          <label for="istj">ISTJ</label>
+          <input type="radio" id="estj" name="mbti-choice" value="estj" />
+          <label for="estj">ESTJ</label>
+        </div>
       </div>
       <input
         type="submit"
@@ -63,4 +72,7 @@
       />
     </form>
   </body>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap");
+  </style>
 </html>

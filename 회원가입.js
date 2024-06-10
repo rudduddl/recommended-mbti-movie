@@ -24,7 +24,7 @@ document.getElementById("sign").addEventListener("submit", function (event) {
 
   if (!passwordRegex.test(password)) {
     alert(
-      "비밀번호는 8~16자 영문 대/소문자를 사용하면서 숫자 혹은 특수문자를 반드시 사용해야 합니다."
+      "비밀번호는 8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요."
     );
     return;
   }

@@ -1,5 +1,6 @@
 <?php
 session_start();
+header('Content-Type: text/html; charset=utf-8');
 
 $servername = "localhost";
 $username = "root";
@@ -25,8 +26,8 @@ if (isset($_POST['login'])) {
         if ($row['pw'] == $input_pw) {
             $_SESSION['userid'] = $input_id;
             if (isset($_SESSION['userid'])) {
-                // 로그인 성공 시 recommend.html로 이동
-                header("Location: recommend.html");
+                // 로그인 성공 시 recommend.php로 이동
+                header("Location: recommend.php");
                 exit();
             } else {
                 echo "<script>alert('세션 설정 실패'); history.back();</script>";

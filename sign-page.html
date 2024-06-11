@@ -6,18 +6,21 @@
     <link rel="stylesheet" href="sign-page.css" />
   </head>
   <body>
-    <h2>자신에게 맞는 영화를 추천받아보세요!</h2>
-    <form action="register.php" method="post">
-      이름:
-      <input type="text" name="name" /><br />
-      <label for="id">아이디</label><br />
-      <input id="id" class="input-box" type="text" /><br />
-      <label for="password">비밀번호</label><br />
-      <input id="password" class="input-box" type="password" /><br />
-      <label for="password-check">비밀번호 확인</label><br />
-      <input id="password-check" class="input-box" type="password" /><br />
-      <input type="submit" name="signup" value="확인" />
-    </form>
+    <h1>회원가입</h1>
+    <span>자신에게 맞는 영화를 추천받아보세요!</span>
+    <div>
+      <form action="register.php" method="post">
+        <label for="name">이름</label><br />
+        <input type="text" class="name" name="name" /><br />
+        <label for="id">아이디</label><br />
+        <input id="id" class="input-box" type="text" /><br />
+        <label for="pw">비밀번호</label><br />
+        <input id="pw" class="input-box" type="password" /><br />
+        <!-- <label for="password-check">비밀번호 확인</label><br />
+      <input id="password-check" class="input-box" type="password" /><br /> -->
+        <input type="submit" class="signup" name="signup" value="가입하기" />
+      </form>
+    </div>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap");
     </style>

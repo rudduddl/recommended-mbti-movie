@@ -5,7 +5,53 @@ body {
   align-items: center;
   font-family: "Noto Sans KR", sans-serif;
   font-optical-sizing: auto;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 400;
   font-style: normal;
+  color: #d1d5db;
+
+  background-color: #1f2937;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 450px;
+  border-radius: 20px;
+  margin-top: 30px;
+  background-color: #374151;
+}
+
+form {
+  margin-top: 30px;
+}
+
+.name,
+.input-box,
+.signup {
+  margin-top: 2px;
+  margin-bottom: 10px;
+  width: 28rem;
+  height: 1.8rem;
+  background-color: #bec1c6;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.signup {
+  margin-top: 70px;
+  width: 28.5rem;
+  height: 2.8rem;
+  border-color: transparent;
+  background-color: white;
+  font-weight: 700;
+  transition-duration: 0.3s;
+}
+.signup:hover {
+  /* filter: brightness(0.9); */
+  background-color: #bec1c6;
+  color: white;
 }

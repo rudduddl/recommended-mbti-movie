@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
             $_SESSION['userid'] = $input_id;
             if (isset($_SESSION['userid'])) {
                 // 로그인 성공 시 recommend.php로 이동
-                header("Location: recommend.php");
+                header("Location: recommend.html");
                 exit();
             } else {
                 echo "<script>alert('세션 설정 실패'); history.back();</script>";

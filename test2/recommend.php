@@ -42,7 +42,7 @@ if (!isset($_SESSION['userid'])) {
             }
 
             // 추천 영화 조회
-            $query = "SELECT movie1, movie2, movie3 FROM movie WHERE mbti='$mbti'";
+            $query = "SELECT movie1, movie2, movie3, movie4, movie5 FROM movie WHERE mbti='$mbti'";
             $result = mysqli_query($connect, $query);
 
             if (mysqli_num_rows($result) > 0) {
@@ -53,6 +53,8 @@ if (!isset($_SESSION['userid'])) {
                     echo "<li>" . $row['movie1'] . "</li>";
                     echo "<li>" . $row['movie2'] . "</li>";
                     echo "<li>" . $row['movie3'] . "</li>";
+                    echo "<li>" . $row['movie4'] . "</li>";
+                    echo "<li>" . $row['movie5'] . "</li>";
                 }
                 echo "</ul>";
                 echo "</div>";

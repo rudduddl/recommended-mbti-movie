@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글 및 댓글</title>
+</head>
+<body>
+    <h1 id="postTitle"></h1>
+    <p id="postContent"></p>
+
+    <!-- 댓글 작성 폼 -->
+    <div>
+        <h2>댓글 작성</h2>
+        <form id="commentForm">
+            <label for="comment">댓글:</label><br>
+            <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br><br>
+            <button type="submit">댓글 작성</button>
+        </form>
+    </div>
+
+    <!-- 댓글 목록 -->
+    <div id="commentContainer">
+        <h2>댓글 목록</h2>
+        <div id="commentList">
+            <!-- 이 곳에 댓글이 동적으로 추가될 것입니다. -->
+        </div>
+    </div>
+
+    <script>
+        // 댓글 작성 폼 제출 이벤트 처리
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+            const comment = document.getElementById('comment').value;
+
+            fetch('comments.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `post_id=${postId}&comment=${comment}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('댓글이 성공적으로 작성되었습니다.');
+                document.getElementById('comment').value = ''; // 입력 필드 초기화
+                loadPostAndComments(); // 댓글 작성 후 댓글 목록 업데이트
+            })
+            .catch(error => {
+                console.error('Error adding comment:', error);
+            });
+        });
+
+        // 페이지 로드 시 글과 댓글 가져오기
+        window.onload = loadPostAndComments;
+
+        // 글 정보와 댓글 가져오기
+        function loadPostAndComments() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+
+            fetch(`board.php?id=${postId}`)
+            .then(response => response.json())
+            .then(post => {
+                document.getElementById('postTitle').innerText = post.title;
+                document.getElementById('postContent').innerText = post.content;
+            })
+            .catch(error => {
+                console.error('Error fetching post:', error);
+            });
+
+            fetch(`comments.php?id=${postId}`)
+            .then(response => response.json())
+            .then(comments => {
+                const commentList = document.getElementById('commentList');
+                commentList.innerHTML = ''; // 목록 초기화
+                comments.forEach(comment => {
+                    const commentItem = document.createElement('div');
+                    commentItem.innerText = comment;
+                    commentList.appendChild(commentItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching comments:', error);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI 영화 추천기 - 추천 받기</title>
+</head>
+<body>
+    <div class="container">
+        <h1>MBTI 영화 추천기</h1>
+        <!-- MBTI 입력 폼 -->
+        <form id="mbtiForm">
+            <label for="mbti">당신의 MBTI를 입력하세요:</label>
+            <input type="text" id="mbti" name="mbti" required>
+            <button type="submit">추천 받기</button>
+        </form>
+
+        <!-- 추천 결과 표시 영역 -->
+        <div id="recommendations">
+            <h2></h2>
+            <ul id="movieList"></ul>
+        </div>
+
+        <!-- 게시판으로 이동하는 버튼 -->
+        <button id="goToBoard">게시판</button>
+    </div>
+
+    <script>
+        // MBTI 폼 제출 이벤트 처리
+        document.getElementById('mbtiForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const mbti = document.getElementById('mbti').value.toUpperCase();
+
+            // recommend.php로 POST 요청을 보냄
+            fetch('recommend.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'mbti=' + mbti
+            })
+            .then(response => response.json())
+            .then(data => {
+                const recommendations = data;
+                const recommendationDiv = document.getElementById('recommendations');
+                const movieList = document.getElementById('movieList');
+
+                // 추천 영화가 있을 경우
+                if (recommendations && recommendations.length > 0) {
+                    recommendationDiv.style.display = 'block'; // 결과 표시 영역 표시
+                    movieList.innerHTML = ''; // 영화 목록 초기화
+                    recommendationDiv.querySelector('h2').textContent = mbti + ' 유형을 위한 영화 추천'; // 제목 설정
+
+                    // 추천 영화 목록을 화면에 출력
+                    recommendations.forEach(movie => {
+                        Object.values(movie).forEach(value => {
+                            const listItem = document.createElement('li');
+                            listItem.textContent = value;
+                            movieList.appendChild(listItem);
+                        });
+                    });
+                } else {
+                    recommendationDiv.style.display = 'none'; // 결과 표시 영역 숨김
+                    alert('유효하지 않은 MBTI 유형이거나 추천 영화가 없습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('서버에 연결할 수 없습니다.');
+            });
+        });
+
+        // "게시판" 버튼 클릭 이벤트 처리
+        document.getElementById('goToBoard').addEventListener('click', function() {
+            window.location.href = 'board.html'; // 게시판 페이지로 이동
+        });
+    </script>
+</body>
+</html>

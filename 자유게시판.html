@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자유게시판</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>자유게시판</h1>
+    <form id="postForm">
+        <input type="text" name="username" placeholder="사용자명" required>
+        <textarea name="content" placeholder="내용을 입력하세요" required></textarea>
+        <button type="submit">게시</button>
+    </form>
+    <div id="posts">
+        {% for post in posts %}
+        <div class="post">
+            <h3>{{ post.username }}</h3>
+            <p>{{ post.content }}</p>
+            <small>{{ post.created_at }}</small>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        document.getElementById('postForm').onsubmit = function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch('/add_post', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json()).then(data => {
+                if (data.status === 'success') {
+                    location.reload();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

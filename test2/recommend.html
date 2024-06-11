@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI 영화 추천기 - 추천 받기</title>
+</head>
+<body>
+    <div class="container">
+        <h1>MBTI 영화 추천기</h1>
+        <!-- MBTI 입력 폼 -->
+        <form id="mbtiForm">
+            <label for="mbti">당신의 MBTI를 입력하세요:</label>
+            <input type="text" id="mbti" name="mbti" required>
+            <button type="submit">추천 받기</button>
+        </form>
+
+        <!-- 추천 결과 표시 영역 (초기에 숨김) -->
+        <div id="recommendations" style="display:none;">
+            <h2><span id="mbtiType"></span> 유형을 위한 영화 추천</h2>
+            <ul id="movieList"></ul>
+        </div>
+    </div>
+
+    <script>
+        // MBTI 유형별 영화 추천 목록
+        const mbtiMovies = {
+            "INTJ": ["인셉션", "매트릭스", "인터스텔라"],
+            "INTP": ["굿 윌 헌팅", "아이언 맨", "엑스 마키나"],
+            "ENTJ": ["다크 나이트", "데드풀", "캐치 미 이프 유 캔"],
+            "ENTP": ["소셜 네트워크", "바스터즈: 거친 녀석들", "더 울프 오브 월 스트리트"],
+            "INFJ": ["아멜리에", "월터의 상상은 현실이 된다", "그린 마일"],
+            "INFP": ["라이프 오브 파이", "이터널 선샤인", "빅 피쉬"],
+            "ENFJ": ["쇼생크 탈출", "어벤져스", "설국열차"],
+            "ENFP": ["포레스트 검프", "실버라이닝 플레이북", "빅 피쉬"],
+            "ISTJ": ["머니볼", "미드나잇 인 파리", "셜록 홈즈"],
+            "ISFJ": ["업", "토이 스토리", "헬프"],
+            "ESTJ": ["인디아나 존스", "미션 임파서블", "매드 맥스"],
+            "ESFJ": ["미녀와 야수", "라라랜드", "노팅 힐"],
+            "ISTP": ["본 아이덴티티", "다이 하드", "매드 맥스: 분노의 도로"],
+            "ISFP": ["캐스트 어웨이", "블랙 팬서", "라라랜드"],
+            "ESTP": ["분노의 질주", "아바타", "탑 건"],
+            "ESFP": ["맘마 미아!", "위대한 쇼맨", "라라랜드"]
+            // 여기에 더 많은 MBTI 유형과 영화 추천을 추가하세요
+        };
+
+        // MBTI 폼 제출 이벤트 처리
+        document.getElementById('mbtiForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const mbtiType = document.getElementById('mbti').value.toUpperCase();
+            const recommendations = mbtiMovies[mbtiType];
+
+            if (recommendations) {
+                document.getElementById('mbtiType').textContent = mbtiType;
+                const movieList = document.getElementById('movieList');
+                movieList.innerHTML = '';
+
+                recommendations.forEach(movie => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = movie;
+                    movieList.appendChild(listItem);
+                });
+
+                document.getElementById('recommendations').style.display = 'block';
+            } else {
+                alert('유효하지 않은 MBTI 유형이거나 추천 영화가 없습니다.');
+            }
+        });
+    </script>
+</body>
+</html>

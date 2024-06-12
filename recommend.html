@@ -11,7 +11,6 @@
     <div class="container">
       <!-- MBTI 입력 폼 -->
       <form id="mbtiForm">
-        <!-- <label for="mbti"><span>당신의 MBTI를 입력하세요:</span></label> -->
         <div id="mbti-recommend">
           <span>당신의 MBTI를 입력하세요 : </span>
           <input type="text" id="mbti" name="mbti" required />
@@ -27,6 +26,9 @@
 
       <!-- 게시판으로 이동하는 버튼 -->
       <button id="goToBoard">게시판으로 이동</button>
+
+      <!-- 로그아웃 버튼 -->
+      <button id="logoutButton">로그아웃</button>
     </div>
 
     <script>
@@ -47,7 +49,7 @@
           })
             .then((response) => response.json())
             .then((data) => {
-              const recommendations = data;
+              const recommendations = data.recommendations;
               const recommendationDiv =
                 document.getElementById("recommendations");
               const movieList = document.getElementById("movieList");
@@ -68,7 +70,6 @@
                   });
                 });
               } else {
-                recommendationDiv.style.display = "none"; // 결과 표시 영역 숨김
                 alert("유효하지 않은 MBTI 유형이거나 추천 영화가 없습니다.");
               }
             })
@@ -83,6 +84,13 @@
         .getElementById("goToBoard")
         .addEventListener("click", function () {
           window.location.href = "board.html"; // 게시판 페이지로 이동
+        });
+
+      // "로그아웃" 버튼 클릭 이벤트 처리
+      document
+        .getElementById("logoutButton")
+        .addEventListener("click", function () {
+          window.location.href = "logout.php"; // 로그아웃 페이지로 이동
         });
 
       // 사용자 이름 가져오기

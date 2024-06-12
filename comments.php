@@ -2,7 +2,7 @@
 // MySQL 데이터베이스에 연결
 $servername = "localhost"; 
 $username = "root"; 
-$password = "3528"; 
+$password = "1234"; 
 $dbname = "login"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);

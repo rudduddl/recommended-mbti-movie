@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="write.css" />
     <title>글쓰기</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>글쓰기</h1>
     <form action="write.php" method="post">
-        <label for="title">글 제목:</label><br>
-        <input type="text" id="title" name="title"><br><br>
-        <label for="content">글 내용:</label><br>
-        <textarea id="content" name="content" rows="4" cols="50"></textarea><br><br>
-        <input type="submit" value="글쓰기">
+      <label for="title">글 제목</label><br />
+      <input type="text" id="title" name="title" cols="100" /><br /><br />
+      <label for="content">글 내용</label><br />
+      <textarea id="content" name="content" rows="15" cols="100"></textarea
+      ><br /><br />
+      <input type="submit" value="작성 완료" id="writebtn" />
     </form>
-</body>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap");
+    </style>
+  </body>
 </html>

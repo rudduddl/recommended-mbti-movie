@@ -2,7 +2,7 @@
 // MySQL 데이터베이스에 연결
 $servername = "localhost"; 
 $username = "root"; 
-$password = "1234"; 
+$password = "3528"; 
 $dbname = "login"; 
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -34,19 +34,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT comment FROM comments WHERE post_id = '$post_id'";
     $result = $conn->query($sql);
 
-    $comments = array();
+    // HTML 형식의 댓글 목록 생성
+    $comments_html = "<ul>";
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $comments[] = $row['comment'];
+            $comment = htmlspecialchars($row['comment']);
+            $comments_html .= "<li>$comment</li>";
         }
     }
 
-    // JSON 형식으로 출력
-    header('Content-Type: application/json');
-    echo json_encode($comments);
+    $comments_html .= "</ul>";
+
+    // HTML 형식으로 출력
+    echo $comments_html;
 }
 
 // MySQL 연결 종료
 $conn->close();
 ?>
+

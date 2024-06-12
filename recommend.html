@@ -3,16 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MBTI 영화 추천기 - 추천 받기</title>
+    <title>MBTI 영화 추천 받기</title>
+    <link rel="stylesheet" href="recommend.css" />
   </head>
   <body>
+    <h1 id="userName">님에게 맞는 영화를 추천드립니다.</h1>
     <div class="container">
       <!-- MBTI 입력 폼 -->
       <form id="mbtiForm">
-        <p id="userName">님의 MBTI를 추천드립니다.</p>
-        <label for="mbti">당신의 MBTI를 입력하세요:</label>
-        <input type="text" id="mbti" name="mbti" required />
-        <button type="submit">추천 받기</button>
+        <!-- <label for="mbti"><span>당신의 MBTI를 입력하세요:</span></label> -->
+        <div id="mbti-recommend">
+          <span>당신의 MBTI를 입력하세요 : </span>
+          <input type="text" id="mbti" name="mbti" required />
+          <button id="recommend-btn" type="submit">추천 받기</button>
+        </div>
       </form>
 
       <!-- 추천 결과 표시 영역 -->
@@ -22,7 +26,7 @@
       </div>
 
       <!-- 게시판으로 이동하는 버튼 -->
-      <button id="goToBoard">게시판</button>
+      <button id="goToBoard">게시판으로 이동</button>
     </div>
 
     <script>
@@ -86,9 +90,12 @@
         .then((response) => response.text())
         .then((name) => {
           document.getElementById("userName").textContent =
-            name + "님의 MBTI를 추천드립니다.";
+            name + "님에게 맞는 영화를 추천드립니다.";
         })
         .catch((error) => console.error("Error fetching user name:", error));
     </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Noto+Sans+KR:wght@100..900&display=swap");
+    </style>
   </body>
 </html>

@@ -1,0 +1,53 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  color: #d1d5db;
+  background-color: #1f2937;
+  margin: 0px;
+}
+
+span {
+  font-size: 25px;
+}
+#mbti {
+  width: 5rem;
+  height: 1.3rem;
+  background-color: #bec1c6;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#mbti-recommend {
+  display: flex;
+  /* justify-content: center; */
+  text-align: center;
+  align-items: center;
+}
+#recommend-btn {
+  border-color: transparent;
+  border-radius: 10px;
+  background-color: white;
+  font-weight: 700;
+  transition-duration: 0.3s;
+}
+#recommend-btn:hover,
+#goToBoard:hover {
+  background-color: #bec1c6;
+  color: white;
+}
+#goToBoard {
+  margin-top: 30px;
+  border-color: transparent;
+  border-radius: 10px;
+  background-color: white;
+  transition-duration: 0.3s;
+  font-weight: 700;
+}

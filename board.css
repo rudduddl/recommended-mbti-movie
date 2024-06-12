@@ -48,3 +48,14 @@ a {
 a:hover {
   color: pink;
 }
+#contents {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20rem;
+  height: 40%;
+  border-radius: 20px;
+  margin-top: 30px;
+  background-color: #374151;
+}

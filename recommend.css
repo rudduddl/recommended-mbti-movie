@@ -51,6 +51,7 @@ span {
   transition-duration: 0.3s;
   font-weight: 700;
 }
+
 #logoutButton {
   border-color: transparent;
   border-radius: 10px;
@@ -59,4 +60,8 @@ span {
   color: white;
   font-weight: 700;
   transition-duration: 0.3s;
+}
+#logoutButton:hover {
+  background-color: white;
+  color: #bec1c6;
 }
